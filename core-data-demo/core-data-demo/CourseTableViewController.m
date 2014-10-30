@@ -15,6 +15,23 @@
 
 @implementation CourseTableViewController
 
+-(void)addCourseViewControllerDidSave{
+    NSManagedObjectContext* context = self.managedObjectContext;
+    
+    NSError* error = nil;
+    if (![context save:&error]) {
+        NSLog(@"ERROR: %@", error);
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)addCourseViewControllerDidCancel:(Course *)courseToDelete{
+    NSManagedObjectContext* context = self.managedObjectContext;
+    [context deleteObject:courseToDelete];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -22,6 +39,22 @@
         // Custom initialization
     }
     return self;
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"toAddCourse"]) {
+        AddCourseViewController* addCourseView = (AddCourseViewController*)[segue destinationViewController];
+        if (addCourseView != nil) {
+            // Set the delegate
+            addCourseView.delegate = self;
+            
+            // Create a new object
+            Course* newCourse = [NSEntityDescription insertNewObjectForEntityForName:@"Course" inManagedObjectContext:self.managedObjectContext];
+            
+            addCourseView.currentCourse = newCourse;
+        }
+    }
 }
 
 - (void)viewDidLoad
@@ -65,8 +98,19 @@
     
     _fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"author" cacheName:nil];
     
+    // set the delegate
+    _fetchedResultsController.delegate = self;
+    
     return _fetchedResultsController;
     
+}
+
+-(void)controllerWillChangeContent:(NSFetchedResultsController *)controller{
+    [self.tableView beginUpdates];
+}
+
+-(void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
+    [self.tableView endUpdates];
 }
 
 #pragma mark - Table view data source

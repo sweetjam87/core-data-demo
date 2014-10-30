@@ -25,6 +25,7 @@
 		A6BD1C271A027BF500F8B47C /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BD1C261A027BF500F8B47C /* Course.m */; };
 		A6BD1C291A027C3B00F8B47C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BD1C281A027C3B00F8B47C /* MainStoryboard.storyboard */; };
 		A6BD1C2C1A027D8100F8B47C /* CourseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BD1C2B1A027D8100F8B47C /* CourseTableViewController.m */; };
+		A6BD1C2F1A02B4A700F8B47C /* AddCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BD1C2E1A02B4A700F8B47C /* AddCourseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		A6BD1C281A027C3B00F8B47C /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		A6BD1C2A1A027D8100F8B47C /* CourseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseTableViewController.h; sourceTree = "<group>"; };
 		A6BD1C2B1A027D8100F8B47C /* CourseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseTableViewController.m; sourceTree = "<group>"; };
+		A6BD1C2D1A02B4A700F8B47C /* AddCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCourseViewController.h; sourceTree = "<group>"; };
+		A6BD1C2E1A02B4A700F8B47C /* AddCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCourseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,8 @@
 				A6BD1C281A027C3B00F8B47C /* MainStoryboard.storyboard */,
 				A6BD1C2A1A027D8100F8B47C /* CourseTableViewController.h */,
 				A6BD1C2B1A027D8100F8B47C /* CourseTableViewController.m */,
+				A6BD1C2D1A02B4A700F8B47C /* AddCourseViewController.h */,
+				A6BD1C2E1A02B4A700F8B47C /* AddCourseViewController.m */,
 			);
 			path = "core-data-demo";
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 				A6BD1C2C1A027D8100F8B47C /* CourseTableViewController.m in Sources */,
 				A6BD1C271A027BF500F8B47C /* Course.m in Sources */,
 				A6BD1C031A01817400F8B47C /* AppDelegate.m in Sources */,
+				A6BD1C2F1A02B4A700F8B47C /* AddCourseViewController.m in Sources */,
 				A6BD1C061A01817400F8B47C /* core_data_demo.xcdatamodeld in Sources */,
 				A6BD1BFF1A01817400F8B47C /* main.m in Sources */,
 			);

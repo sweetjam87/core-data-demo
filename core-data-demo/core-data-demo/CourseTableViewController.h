@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddCourseViewController.h"
 
-@interface CourseTableViewController : UITableViewController
+@interface CourseTableViewController : UITableViewController <AddCourseViewControllerDelegate, NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
 
