@@ -22,6 +22,9 @@
 		A6BD1C121A01817400F8B47C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BD1BF61A01817400F8B47C /* CoreData.framework */; };
 		A6BD1C1A1A01817400F8B47C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6BD1C181A01817400F8B47C /* InfoPlist.strings */; };
 		A6BD1C1C1A01817400F8B47C /* core_data_demoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BD1C1B1A01817400F8B47C /* core_data_demoTests.m */; };
+		A6BD1C271A027BF500F8B47C /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BD1C261A027BF500F8B47C /* Course.m */; };
+		A6BD1C291A027C3B00F8B47C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BD1C281A027C3B00F8B47C /* MainStoryboard.storyboard */; };
+		A6BD1C2C1A027D8100F8B47C /* CourseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BD1C2B1A027D8100F8B47C /* CourseTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,11 @@
 		A6BD1C171A01817400F8B47C /* core-data-demoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "core-data-demoTests-Info.plist"; sourceTree = "<group>"; };
 		A6BD1C191A01817400F8B47C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A6BD1C1B1A01817400F8B47C /* core_data_demoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = core_data_demoTests.m; sourceTree = "<group>"; };
+		A6BD1C251A027BF500F8B47C /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
+		A6BD1C261A027BF500F8B47C /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
+		A6BD1C281A027C3B00F8B47C /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		A6BD1C2A1A027D8100F8B47C /* CourseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseTableViewController.h; sourceTree = "<group>"; };
+		A6BD1C2B1A027D8100F8B47C /* CourseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +127,12 @@
 				A6BD1C021A01817400F8B47C /* AppDelegate.m */,
 				A6BD1C071A01817400F8B47C /* Images.xcassets */,
 				A6BD1C041A01817400F8B47C /* core_data_demo.xcdatamodeld */,
+				A6BD1C251A027BF500F8B47C /* Course.h */,
+				A6BD1C261A027BF500F8B47C /* Course.m */,
 				A6BD1BF91A01817400F8B47C /* Supporting Files */,
+				A6BD1C281A027C3B00F8B47C /* MainStoryboard.storyboard */,
+				A6BD1C2A1A027D8100F8B47C /* CourseTableViewController.h */,
+				A6BD1C2B1A027D8100F8B47C /* CourseTableViewController.m */,
 			);
 			path = "core-data-demo";
 			sourceTree = "<group>";
@@ -228,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6BD1C291A027C3B00F8B47C /* MainStoryboard.storyboard in Resources */,
 				A6BD1BFD1A01817400F8B47C /* InfoPlist.strings in Resources */,
 				A6BD1C081A01817400F8B47C /* Images.xcassets in Resources */,
 			);
@@ -248,6 +262,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6BD1C2C1A027D8100F8B47C /* CourseTableViewController.m in Sources */,
+				A6BD1C271A027BF500F8B47C /* Course.m in Sources */,
 				A6BD1C031A01817400F8B47C /* AppDelegate.m in Sources */,
 				A6BD1C061A01817400F8B47C /* core_data_demo.xcdatamodeld in Sources */,
 				A6BD1BFF1A01817400F8B47C /* main.m in Sources */,

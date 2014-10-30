@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CourseTableViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
