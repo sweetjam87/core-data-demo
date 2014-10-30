@@ -16,10 +16,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+    // Set Navigation Controller as the rootViewController
+    UINavigationController* navController = (UINavigationController*)self.window.rootViewController;
+    
+    CourseTableViewController* courseTableViewController = (CourseTableViewController*)[[navController viewControllers]objectAtIndex:0];
+    courseTableViewController.managedObjectContext = self.managedObjectContext;
+    
     return YES;
 }
 
