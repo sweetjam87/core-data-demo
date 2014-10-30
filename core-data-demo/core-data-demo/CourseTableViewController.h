@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AddCourseViewController.h"
+#import "DisplayEditViewController.h"
 
 @interface CourseTableViewController : UITableViewController <AddCourseViewControllerDelegate, NSFetchedResultsControllerDelegate>
 

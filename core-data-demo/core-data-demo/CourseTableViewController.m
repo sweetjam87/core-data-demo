@@ -55,6 +55,15 @@
             addCourseView.currentCourse = newCourse;
         }
     }
+    
+    if ([segue.identifier isEqualToString:@"toDisplayEditView"]) {
+        DisplayEditViewController* displayEditView = (DisplayEditViewController*)[segue destinationViewController];
+        if (displayEditView != nil) {
+            NSIndexPath* indexPath = [self.tableView indexPathForSelectedRow];
+            Course* selectedCourse = (Course*) [self.fetchedResultsController objectAtIndexPath:indexPath];
+            displayEditView.currentCourse = selectedCourse;
+        }
+    }
 }
 
 - (void)viewDidLoad
@@ -68,7 +77,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
     NSError* error;
-    if (![_fetchedResultsController performFetch:&error]) {
+    if (![self.fetchedResultsController performFetch:&error]) {
         NSLog(@"ERROR: %@", error);
     }
     
@@ -99,7 +108,7 @@
     _fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"author" cacheName:nil];
     
     // set the delegate
-    _fetchedResultsController.delegate = self;
+    self.fetchedResultsController.delegate = self;
     
     return _fetchedResultsController;
     
@@ -111,6 +120,49 @@
 
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
     [self.tableView endUpdates];
+}
+
+-(void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath{
+    // Create temp tableview placeholder
+    UITableView* tableView = self.tableView;
+    
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeUpdate: {
+            Course* changedCourse = [self.fetchedResultsController objectAtIndexPath:indexPath];
+            UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+            cell.textLabel.text = changedCourse.title;
+        }
+            break;
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        default:
+            break;
+    }
+}
+
+-(void)controller:(NSFetchedResultsController *)controller didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+    UITableView* tableView = self.tableView;
+    
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        default:
+            break;
+    }
+    
 }
 
 #pragma mark - Table view data source
@@ -154,18 +206,22 @@
 }
 */
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+        // Grab the managedObjectContext
+        NSManagedObjectContext* context = self.managedObjectContext;
+        Course* courseToDelete = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [context deleteObject:courseToDelete];
+        
+        NSError* error;
+        if (![context save:&error]) {
+            NSLog(@"ERROR: %@", error);
+        }
+    }
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
